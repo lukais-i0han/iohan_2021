@@ -2,13 +2,15 @@ library('stageR')
 library('DRIMSeq')
 
 
-#####
+##### Import of Isoform Switch archives
 
 Tau_4 <- readRDS('stage_archives/refs/Mouse/age_4.fullAnalysis.rds')
 Tau_4 <- Tau_4$isoformFeatures
 
 Tau_17 <- readRDS('stage_archives/refs/Mouse/age_17.fullAnalysis.rds')
 Tau_17 <- Tau_17$isoformFeatures
+
+### Import of gene correspondece table, transcript counts and metadata
 
 tx2gene <- read.table('stage_archives/refs/Mouse/t2g.txt',header = F)
 
@@ -18,7 +20,7 @@ counts_TAU <- read.csv('stage_archives/refs/Mouse/counts_TAU.csv',header = T, st
 TAU_metadado <- read.csv('stage_archives/refs/Mouse/Tau_metadado.csv',header = T, stringsAsFactors = F,
                          row.names = 1)
 
-####
+### Run the stageR algorithm to mice with 4 months
 
 TAU_metadado_4 <- TAU_metadado[TAU_metadado$age == '4_months',]
 
@@ -71,8 +73,7 @@ write.csv(padj_4,'stage_archives/results/Mouse/stage_TAU_4.csv')
 
 
 
-
-####
+### Run the stageR algorithm to mice with 17 months
 
 TAU_metadado_17 <- TAU_metadado[TAU_metadado$age == '17_months',]
 
