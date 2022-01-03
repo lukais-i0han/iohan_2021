@@ -3,7 +3,7 @@ library('DRIMSeq')
 library('dplyr')
 library('stringr')
 
-#### Import of ISofor Switch objects
+#### Import of ISoform Switch objects
 
 mayo_A <- readRDS('archives/ISW/MAYO_CER/Age_A.fullAnalysis.rds')
 mayo_B <- readRDS('archives/ISW/MAYO_CER/Age_B.fullAnalysis.rds')
@@ -54,7 +54,8 @@ mayo_All <- mayo_All %>% mutate(Group = case_when(
   TRUE ~ 'PA'
 ))
 
-####
+#### Import of gene correspondece table, transcript counts and metadata
+
 tx2gene <- read.table('stage_archives/refs/Human/tg2.txt',header = T)
 
 metadado_CER <- read.csv('stage_archives/refs/Human/new/mayo_metadado_CER.csv',
@@ -73,6 +74,7 @@ counts_all <- read.csv('stage_archives/refs/Human/new/counts_transcripts_CER.csv
 counts_all <- counts_all[rownames(counts_all) %in% mayo_All$isoform_id,]
 colnames(counts_all) <- metadado_CER$ID
 
+### Function to get gDTUs with FDR < 0.01
 
 drim_stage <- function(Age_Group,Condition){
   
