@@ -1,5 +1,7 @@
 #!/bin/bash
 
+### Script to convert bam file do fastq file and run pseudo-aligment with Kallisto to TauD35 data
+
 for FILE in *.bam; do 
     mkdir s"$FILE" 
     samtools bam2fq $FILE > sample.fastq
