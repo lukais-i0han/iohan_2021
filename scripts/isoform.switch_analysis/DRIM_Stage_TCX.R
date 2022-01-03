@@ -3,6 +3,8 @@ library('DRIMSeq')
 library('dplyr')
 library('stringr')
 
+### Script to confirm genes with DTU
+
 #### Import of ISofor Switch objects
 
 mayo_A <- readRDS('archives/ISW/MAYO/Age_A.fullAnalysis.rds')
@@ -54,7 +56,7 @@ mayo_All <- mayo_All %>% mutate(Group = case_when(
   TRUE ~ 'PA'
 ))
 
-####
+#### Import of correspondece gene table and metadata
 tx2gene <- read.table('stage_archives/refs/Human/tg2.txt',header = T)
 
 metadado_TCX <- read.csv('stage_archives/refs/Human/new/mayo_metadado.csv',
@@ -75,6 +77,8 @@ colnames(counts_all) <- metadado_TCX$ID
 
 Age_Group <- c('A','B','C','A','B')
 Condition <- c('PA','PA','PA','PSP','PSP')
+
+### Function do calculate gDTU with FDR < 0.01
 
 drim_stage <- function(Age_Group,Condition){
   
