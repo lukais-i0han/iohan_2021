@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-### Script made by Diego Marques and modified by Lukas Iohan7
+### Script made by Diego Marques and modified by Lukas Iohan
 ### 
 
 # Necessary libraries
