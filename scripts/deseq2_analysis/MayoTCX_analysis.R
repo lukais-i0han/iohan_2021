@@ -9,7 +9,7 @@ library("stringr")
 
 mayo_age_TCX <- readRDS('results/mayo_age_TCX.rds')
 
-### Function to run differential expression analysis to Human Temporal of Mayo Dataset. 
+### Function to run differential expression analysis for Human Temporal data from Mayo Dataset. 
 ### Note the we ran this analysis to Pathological Aging condition, but in the paper we decided to not included these results.
 
 deseq_function <-function (Age,Condition) {  
