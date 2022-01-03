@@ -9,7 +9,7 @@ Brazil
 déterminants moléculaires des maladies liées au vieillissement, DISTALZ, Lille, France
 
 * Corresponding author: marcos.costa@pasteur-lille.fr
-* paper: https://www.medrxiv.org/content/10.1101/2021.09.21.21263793v3
+* Paper: https://www.medrxiv.org/content/10.1101/2021.09.21.21263793v3
 ## Abstract
 
 A comprehensive understanding of the pathological mechanisms involved at different
