@@ -4,7 +4,7 @@ library('dplyr')
 library('stringr')
 
 mayo_DEG_DTU_TCX <- read.csv('NEW_GPROFILER/refs/H_DEG_DTU_TCX.csv',header = T,stringsAsFactors = F,
-                         row.names = 1)
+                         row.names = 1) ### table with genes classified by disease, expression (DEG and gDTU) and groups (A, B and C)
 
 
 mayo_DEG_TCX <- mayo_DEG_DTU_TCX[mayo_DEG_DTU_TCX$Class == 'DEG',]
