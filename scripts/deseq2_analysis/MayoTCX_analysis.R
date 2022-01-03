@@ -9,6 +9,8 @@ library("stringr")
 
 mayo_age_TCX <- readRDS('results/mayo_age_TCX.rds')
 
+### Function to run differential expression analysis to Human Temporal of Mayo Dataset. 
+### Note the we ran this analysis to Pathological Aging condition, but in the paper we decided to not included these results.
 
 deseq_function <-function (Age,Condition) {  
   res <-results(mayo_age_TCX,
@@ -78,5 +80,5 @@ mayo_TCX_all <- rbind(AD_A_TCX,AD_B_TCX,AD_C_TCX,PSP_A_TCX,PSP_B_TCX,
 
 mayo_TCX_sig <- mayo_TCX_all[mayo_TCX_all$DEG == 'DEG',] 
 
-write.csv(mayo_TCX_all,'results/new_results/mayo_TCX_all.csv')
-write.csv(mayo_TCX_sig,'results/new_results/mayo_TCX_sig.csv')
+write.csv(mayo_TCX_all,'results/new_results/mayo_TCX_all.csv') ### Table with all genes
+write.csv(mayo_TCX_sig,'results/new_results/mayo_TCX_sig.csv') ### Table with only significant genes (FDR < 0.01)
