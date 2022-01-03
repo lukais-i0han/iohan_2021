@@ -11,6 +11,7 @@ library('gprofiler2')
 
 #### PPI cemitool
 
+### Almost all code bellow is from the source code of the package CEMiTool. I did some modifications to plot genes of my preference and change colors of the plot.
 
 plot_interaction <- function(ig_obj, n, color, name, mod_genes, coexp_hubs,AD_rik){
   degrees <- igraph::degree(ig_obj, normalized=FALSE)
