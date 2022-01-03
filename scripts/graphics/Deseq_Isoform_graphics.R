@@ -1,4 +1,4 @@
-#### Month and Region analysis
+#### Month and Region graphics to Human Temporal Cortex data and Mouse models data
 library('dplyr')
 library('stringr')
 library('ggplot2')
