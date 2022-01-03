@@ -1,1 +1,18 @@
+This section contains information and the scripts to make the analysis and figures of the paper: Analysis of modular gene co-expression networks reveals molecular pathways underlying Alzheimer’s disease and progressive supranuclear palsy. The data used in this paper can be found in the database of synapse.org. Below, the synapses-id to the data analyzed:
+1 - syn5550404 (Mayo dataset) Human
+2 - syn3159438 (MSBB dataset) Human
+3 - syn16798076 (5XFAD dataset) Mouse model
+4 - syn5714308 (TauD35 dataset) Mouse model
 
+It is worthy to say that some of datasets cited above contains sensitive data about patients (human data) and to acess it you will need a authorization by synapse. And we can not share it. 
+
+In resume, analyis were done according to the following steps:
+
+1 - Download of fastq or bam files from synapse;
+2 - Pseudo-aligment with Kallisto;
+3 - Differential Analysis with DESEq2
+4 - Isoform Analysis with IsoformSwitch
+5 - Modules Analysis with CemiTool
+6 - Network Analysis with gprofiler2 + CytoScape + RedeR (for visualization)
+
+You can find more details about the analysis (methods and statistics in the paper)
