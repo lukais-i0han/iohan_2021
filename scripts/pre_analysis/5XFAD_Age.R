@@ -4,7 +4,7 @@ library('tximport')
 library('DESeq2')
 library('stringr')
 
-##Metadado
+## Create the metadata table to data from 5XFAD dataset
 
 FAD_individual <- read.csv('Deseq2//metadata/UCI_5XFAD.csv',header = T,stringsAsFactors = F)
 FAD_individual <- FAD_individual[!duplicated(FAD_individual$specimenID),]
@@ -43,11 +43,7 @@ FAD_metadata$'GMR' <- paste(FAD_metadata$Group,FAD_metadata$Month,FAD_metadata$R
 FAD_metadata$'SpecimenID' <- FAD_individual$specimenID
 rownames(FAD_metadata) <- FAD_metadata$SpecimenID
 
-FAD_RNASEQ_metadado <- read.csv('Deseq2/metadata/UCI_5xFAD_RNAseq_metadata_UCI.csv',
-                      stringsAsFactors = F)
-FAD_RNASEQ_metadado <- FAD_RNASEQ_metadado[FAD_RNASEQ_metadado$specimenID %in% FAD_metadata$SpecimenID,]
-
-
+write.csv(FAD_metadata,'Deseq2/metadata/FAD_metadata_final.csv')
 
 ### Import Kallisto files
 
@@ -57,24 +53,20 @@ FAD_metadata <- read.csv('Deseq2/metadata/FAD_metadata_final.csv',row.names = 1,
 files = paste0(list.files("kallisto", full.names=T), "/abundance.tsv")
 files = grep(paste0(paste0("/",FAD_metadata$individualID), collapse="|"), files, value=T)
 
-tx2gene <- read.table("Deseq2/refs/t2g.txt", header = F, stringsAsFactors = F)
+tx2gene <- read.table("Deseq2/refs/t2g.txt", header = F, stringsAsFactors = F) ### table with correspondece between transcripts and its respective genes
 
 kallistoQuant <- tximport(files, type = 'kallisto',tx2gene = tx2gene[,c(1,3)])
 colnames(kallistoQuant$abundance) <- FAD_metadata$SpecimenID
 colnames(kallistoQuant$counts) <- FAD_metadata$SpecimenID
 
-counts_FAD <- kallistoQuant$counts
-colnames(counts_FAD) <- FAD_metadata$SpecimenID
+### Make table with transcript abundance to later analysis with IsoformSwitch
+kallistoQuant_ISO <- tximport(files, type = 'kallisto',txOut = T)
+counts_FAD5X <- data.frame(kallistoQuant_ISO$counts,stringsAsFactors = F) 
+write.csv(counts_FAD5X,'counts_FAD5X.csv')
 
-keep <- rowSums(counts_FAD) >=10
-
-counts_FAD <- counts_FAD[keep,]
-
-saveRDS(counts_FAD,'counts_FAD.rds')
-### Desesq2 for gene-level
+### Run DESeq2 with GMR as the design variable
 
 dds <- DESeqDataSetFromTximport(kallistoQuant,colData = FAD_metadata,design = ~GMR)
-
 
 dds <- DESeq(dds,fitType = 'local')
 
