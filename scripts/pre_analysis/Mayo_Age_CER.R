@@ -42,9 +42,6 @@ files = grep(paste0(paste0("/",mayo_metadado$ID), collapse="|"), files, value=T)
 tx2gene <- read.table("refs/tg2.txt", header = T, stringsAsFactors = F) ### table with correspondece between transcripts and its respective genes
 
 kallistoQuant <- tximport(files, type = 'kallisto',tx2gene = tx2gene[,c(1,3)])
-
-# kallistoQuant <- tximport(files, type = 'kallisto',txOut = T)
-
 colnames(kallistoQuant$abundance) <- mayo_metadado$ID
 colnames(kallistoQuant$counts) <- mayo_metadado$ID
 
@@ -57,7 +54,6 @@ write.csv(counts_CER,'results/new_results/counts_transcripts_CER.csv')
 
 dds <- DESeqDataSetFromTximport(kallistoQuant,colData = mayo_metadado,design = ~Diag_Age)
 keep <- rowSums(counts(dds)) >=10
-
 dds <- dds[keep,]
 dds <- DESeq(dds)
 saveRDS(dds, file= "results/new_results/mayo_age_CER.rds") 
