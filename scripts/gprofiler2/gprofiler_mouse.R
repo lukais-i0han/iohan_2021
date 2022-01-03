@@ -1,9 +1,10 @@
 library('gprofiler2')
+library('dplyr')
+library('stringr')
 
 
-F_DEG_DTU <- readRDS('NEW_GPROFILER/refs/F_DEG_DTU.rds')
-
-
+### Gprofiler to 5XFAD data
+F_DEG_DTU <- readRDS('NEW_GPROFILER/refs/F_DEG_DTU.rds') ### table with genes classified by disease, expression (DEG and gDTU) and groups (4, 12 and 18)
 
 ### DEG
 
@@ -182,9 +183,9 @@ fad5x_gprofiler <- fad5x_gprofiler[fad5x_gprofiler$intersection_size > 3,]
 write.csv(fad5x_gprofiler,'NEW_GPROFILER/FAD/fad5x_gprofiler2')
 
 
-### TAU PER AGE
+### Gprofiler2 to TauD35 data
 
-T_DEG_DTU <- readRDS('NEW_GPROFILER/refs/T_DEG_DTU.rds')
+T_DEG_DTU <- readRDS('NEW_GPROFILER/refs/T_DEG_DTU.rds') ### table with genes classified by disease, expression (DEG and gDTU) and groups (4 and 17)
 
 TAU_DEG <- T_DEG_DTU[T_DEG_DTU$Class == 'DEG',]
 
