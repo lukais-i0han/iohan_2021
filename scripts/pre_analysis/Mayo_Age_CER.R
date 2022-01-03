@@ -49,7 +49,8 @@ colnames(kallistoQuant$abundance) <- mayo_metadado$ID
 colnames(kallistoQuant$counts) <- mayo_metadado$ID
 
 ### Make table with transcript abundance to later analysis with IsoformSwitch
-counts_CER <- data.frame(kallistoQuant$counts,stringsAsFactors = F) 
+kallistoQuant_ISO <- tximport(files, type = 'kallisto',txOut = T)
+counts_CER <- data.frame(kallistoQuant_ISO$counts,stringsAsFactors = F) 
 write.csv(counts_CER,'results/new_results/counts_transcripts_CER.csv')
 
 ### Run DESeq2 with Age as the design variable
