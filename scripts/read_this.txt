@@ -16,3 +16,4 @@ In resume, analyis were done according to the following steps:
 6 - Network Analysis with gprofiler2 + CytoScape + RedeR (for visualization)
 
 You can find more details about the analysis (methods and statistics in the paper)
+If you need any information, send a message to me: lukas@neuro.ufrn.br
