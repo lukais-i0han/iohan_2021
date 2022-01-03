@@ -1,7 +1,7 @@
 library('stageR')
 library('DRIMSeq')
 
-
+### Script to confirm genes with DTU to 5XFAD data
 
 Age_Group <- c('CCX_4','CCX_12','CCX_18','HIP_4','HIP_12','HIP_18')
 
@@ -37,7 +37,7 @@ results_FAD <- results_FAD[order(results_FAD$ensembl_transcript_id),]
 
 
 ## Group of Ages
-
+## Function to calculate gDTUS with FDR< 0.01
 
 stage_tabs <- lapply(Age_Group,function(Age) {
   
