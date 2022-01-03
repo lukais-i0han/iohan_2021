@@ -7,6 +7,9 @@ library("stringr")
 
 mayo_age_cer <- readRDS('results/new_results/CER/mayo_age_CER.rds')
 
+### Function to run differential expression analysis for Human Cerebellum data from Mayo Dataset. 
+### Note the we ran this analysis to Pathological Aging condition, but in the paper we decided to not included these results.
+
 deseq_function <-function (Age,Condition) {  
   res <-results(mayo_age_cer,
                 contrast = c("Diag_Age",paste0(Condition,'_',Age),paste0("Control_",Age)),
@@ -75,5 +78,5 @@ mayo_CER_all <- rbind(AD_A_CER,AD_B_CER,AD_C_CER,PSP_A_CER,PSP_B_CER,
 
 mayo_CER_sig <- mayo_CER_all[mayo_CER_all$DEG == 'DEG',] 
 
-write.csv(mayo_CER_all,'results/new_results/mayo_CER_all.csv')
-write.csv(mayo_CER_sig,'results/new_results/mayo_CER_sig.csv')
+write.csv(mayo_CER_all,'results/new_results/mayo_CER_all.csv') ### Table with all genes
+write.csv(mayo_CER_sig,'results/new_results/mayo_CER_sig.csv') ### Table with only significant genes (FDR < 0.01)
