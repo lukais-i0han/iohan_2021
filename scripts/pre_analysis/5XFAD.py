@@ -1,6 +1,9 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+### Script made by Diego Marques and modified by Lukas Iohan7
+### 
+
 # Necessary libraries
 from IPython.display import clear_output
 
@@ -29,7 +32,7 @@ kalRef = "/data4/lukais.iohan/5XFAD/refs/Mus_musculus.GRCm38.re99.idx"
 #### Synapse login
 syn = synapseclient.Synapse()
 
-syn.login('lukais.iohan', '338486319ccil')
+syn.login('********', '**********') ### sensitve information, can not be shared it.
 
 def runKallisto(samples,path):
     
