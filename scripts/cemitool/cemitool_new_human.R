@@ -104,14 +104,14 @@ cemitool_function <- function(group_Condtition,vsd_object,metadado) {
   
 }
 
-group_Condtition <- c('PSP')
+group_Condtition <- c('ALZ','PA','PSP')
 
-for (i in 1) {
+for (i in 3) {
   cemitool_function(group_Condtition[i],vsd_mayo_TCX,mayo_meta_TCX)
   
 }
 
-### Create cemtool archive
+### Create cemtool CER archive
 
 cemitool_function <- function(group_Condtition,vsd_object,metadado) {
   
