@@ -8,7 +8,7 @@ library("stringr")
 mayo_age_cer <- readRDS('results/new_results/CER/mayo_age_CER.rds')
 
 ### Function to run differential expression analysis for Human Cerebellum data from Mayo Dataset. 
-### Note the we ran this analysis to Pathological Aging condition, but in the paper we decided to not included these results.
+### Note the we ran this analysis to Pathological Aging condition, but in the paper we decided to not include these results.
 
 deseq_function <-function (Age,Condition) {  
   res <-results(mayo_age_cer,
