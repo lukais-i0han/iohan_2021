@@ -4,7 +4,7 @@ This section contains information and the scripts to make the analysis and figur
 3 - syn16798076 (5XFAD dataset) Mouse model
 4 - syn5714308 (TauD35 dataset) Mouse model
 
-It is worthy to say that some of datasets cited above contains sensitive data about patients (human data) and to acess it you will need a authorization by synapse. And we can not share it. 
+It is worthy to say that some of datasets cited above contains sensitive data about patients (human data) and to acess it you will need a authorization by synapse. 
 
 In resume, analyis were done according to the following steps:
 
